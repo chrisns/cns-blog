@@ -1487,7 +1487,8 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 .post-body blockquote p:last-child,
 .post-body blockquote.pull-quote p:last-child { margin-bottom: 0; }
 
-/* Code block */
+/* Code block — applies to any <pre> in the body, not just .pre.code */
+.post-body pre,
 .post-body pre.code {
   background: var(--paper-2);
   border: 1px solid var(--paper-3);
@@ -1497,10 +1498,22 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   overflow-x: auto;
   font-family: var(--font-mono);
   font-size: 13.5px;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--ink);
+  white-space: pre;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  word-wrap: normal;
 }
-.post-body pre.code code { font-family: inherit; }
+.post-body pre code,
+.post-body pre span {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
 .post-body pre.code .kw { color: var(--pink-deep); font-weight: 600; }
 .post-body pre.code .cm { color: var(--ink-3); font-style: italic; }
 .post-body code:not(pre code) {
@@ -1510,6 +1523,19 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   padding: 1px 6px;
   border: 1px solid var(--paper-3);
   color: var(--ink);
+}
+
+/* Inline videos from LinkedIn — let them break out like figures so the
+   16:9 frame matches the cover hero, and the controls bar is visible. */
+.post .post-body video {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw - 32px, 980px);
+  margin: 2.4em 0;
+  display: block;
+  background: #14110F;
+  border: 1px solid var(--ink);
 }
 
 /* ---------- Image figures ---------- */
