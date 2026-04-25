@@ -10,6 +10,7 @@ export default function () {
       author: e.author,
       sourceUrl: e.sourceUrl,
       image: e.image,
+      imgCaption: e.imgCaption || null,
       bodyHtml: e.bodyHtml,
     }))
     .sort((a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0));

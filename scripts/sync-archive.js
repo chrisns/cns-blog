@@ -43,6 +43,7 @@ function entryFromRssItem(it) {
     date: it.pubDate ? new Date(it.pubDate).toISOString() : null,
     sourceUrl: it.link,
     image: it.enclosure?.["@_url"] ?? null,
+    imgCaption: it.imgCaption || null,
     bodyHtml: it.description?.__cdata ?? it.description ?? "",
     fetchedAt: new Date().toISOString(),
   };
@@ -55,6 +56,7 @@ function entryFromArticleJson(slug, j) {
     date: j.pubDate ? new Date(j.pubDate).toISOString() : null,
     sourceUrl: j.link,
     image: j.img || null,
+    imgCaption: j.imgCaption || null,
     bodyHtml: j.description || "",
     fetchedAt: new Date().toISOString(),
   };

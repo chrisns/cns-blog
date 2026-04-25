@@ -6,7 +6,12 @@ layout: base.njk
     <h1>{{ issue.title }}</h1>
     <time datetime="{{ issue.date | isoDate }}">{{ issue.date | humanDate }}</time>
   </header>
-  {% if issue.image %}<img class="post-cover" src="{{ issue.image }}" alt="" loading="lazy">{% endif %}
+  {% if issue.image %}
+  <figure class="post-cover">
+    <img src="{{ issue.image }}" alt="" loading="lazy">
+    {% if issue.imgCaption %}<figcaption>{{ issue.imgCaption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
   <div class="post-body">
     {{ issue.bodyHtml | safe }}
   </div>
