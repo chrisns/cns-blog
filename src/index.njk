@@ -4,16 +4,11 @@ pageTitle: ""
 screenLabel: Index
 ---
 {% set lead = issues[0] %}
-{% set rest = issues | slice(1) | first %}
 
-<section class="blog-intro">
-  <p>{{ site.description | safe }}</p>
-</section>
-
-<header class="section-header" id="index">
+<header class="section-header" id="blog">
   <div class="rule strong"></div>
   <div class="sh-row">
-    <span class="eyebrow">Index</span>
+    <span class="eyebrow">Blog</span>
     <h2 class="sh-title">Cloudy with a chance of <em>freefall.</em></h2>
     <span class="sh-count">
       <span class="num">{{ issues.length }}</span>
