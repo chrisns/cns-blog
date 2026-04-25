@@ -3,9 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
+    <title>{% if pageTitle %}{{ pageTitle }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ pageDescription or site.description }}">
+    <link rel="canonical" href="{{ (page.url | absoluteUrl(site.url)) }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.feedUrl }}">
+    <link rel="stylesheet" href="/assets/style.css">
+    <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}">
+    <meta property="og:title" content="{{ pageTitle or site.title }}">
+    <meta property="og:description" content="{{ pageDescription or site.description }}">
+    <meta property="og:url" content="{{ (page.url | absoluteUrl(site.url)) }}">
+    {% if ogImage %}<meta property="og:image" content="{{ ogImage }}">{% endif %}
+    <meta name="twitter:card" content="{% if ogImage %}summary_large_image{% else %}summary{% endif %}">
+    <meta name="twitter:creator" content="@chrisns">
   </head>
   <body>
-    {{ content | safe }}
+    <header class="site-header">
+      <a class="site-title" href="/">{{ site.title }}</a>
+      <nav class="site-nav">
+        {% for l in site.links %}
+          <a href="{{ l.href }}">{{ l.label }}</a>
+        {% endfor %}
+        <a href="{{ site.feedUrl }}" rel="alternate" type="application/rss+xml">RSS</a>
+      </nav>
+    </header>
+    <main>
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer">
+      <p>By <a href="https://www.linkedin.com/in/chrisns/">{{ site.author }}</a>. Originally published on
+        <a href="{{ site.newsletterUrl }}">LinkedIn</a>. Source on
+        <a href="https://github.com/chrisns/cns-blog">GitHub</a>, fed by
+        <a href="https://github.com/chrisns/linkedin-newsletter-rss">linkedin-newsletter-rss</a>.</p>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,115 @@
+:root {
+  --fg: #1a1a1a;
+  --fg-muted: #555;
+  --bg: #fafaf7;
+  --accent: #0a66c2;
+  --rule: #e5e3dd;
+  --max: 70ch;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #ececec;
+    --fg-muted: #a8a8a8;
+    --bg: #14151a;
+    --accent: #79b8ff;
+    --rule: #2a2c33;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: 1.0625rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--fg);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img, video { max-width: 100%; height: auto; display: block; }
+
+main, .site-header, .site-footer { padding: 0 1.25rem; }
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem 1.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-top: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.site-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--fg);
+  margin-right: auto;
+}
+.site-nav { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; }
+.site-nav a { color: var(--fg-muted); }
+.site-nav a:hover { color: var(--accent); }
+
+main { max-width: var(--max); margin: 0 auto; padding-top: 2rem; padding-bottom: 3rem; }
+
+.site-footer {
+  max-width: var(--max);
+  margin: 2rem auto 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+.site-footer a { color: var(--fg-muted); text-decoration: underline; }
+
+.intro h1 { font-size: 2rem; margin: 0 0 0.5rem; line-height: 1.2; }
+.intro p { color: var(--fg-muted); margin: 0 0 2.5rem; }
+
+.issues { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; }
+.issue { display: grid; grid-template-columns: 160px 1fr; gap: 1.25rem; align-items: start; }
+.issue-cover img { border-radius: 6px; aspect-ratio: 16/9; object-fit: cover; }
+.issue-meta h2 { font-size: 1.2rem; margin: 0 0 0.35rem; line-height: 1.3; }
+.issue-meta h2 a { color: var(--fg); }
+.issue-meta time { color: var(--fg-muted); font-size: 0.85rem; }
+
+@media (max-width: 540px) {
+  .issue { grid-template-columns: 1fr; }
+}
+
+.post-header h1 { font-size: 1.85rem; line-height: 1.2; margin: 0 0 0.5rem; }
+.post-header time { color: var(--fg-muted); font-size: 0.9rem; }
+.post-cover { margin: 1.5rem 0; border-radius: 8px; }
+
+.post-body { font-size: 1.075rem; }
+.post-body p, .post-body ul, .post-body ol, .post-body blockquote, .post-body figure { margin: 0 0 1.1rem; }
+.post-body h2 { margin: 2rem 0 0.75rem; line-height: 1.3; font-size: 1.4rem; }
+.post-body h3 { margin: 1.5rem 0 0.5rem; line-height: 1.3; font-size: 1.15rem; }
+.post-body img { margin: 1.25rem auto; border-radius: 6px; }
+.post-body blockquote {
+  margin-inline: 0;
+  padding: 0.25rem 1rem;
+  border-left: 3px solid var(--accent);
+  color: var(--fg-muted);
+  font-style: italic;
+}
+.post-body pre { overflow-x: auto; padding: 0.9rem 1rem; background: rgba(127,127,127,0.1); border-radius: 6px; font-size: 0.9rem; }
+.post-body code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.92em; }
+.post-body :not(pre) > code { background: rgba(127,127,127,0.15); padding: 0.1em 0.35em; border-radius: 3px; }
+.post-body iframe { max-width: 100%; }
+
+.post-footer {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+.post-footer p { margin: 0 0 0.5rem; }

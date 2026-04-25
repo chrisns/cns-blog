@@ -1,0 +1,13 @@
+---
+pagination:
+  data: issues
+  size: 1
+  alias: issue
+permalink: "/posts/{{ issue.slug }}/"
+layout: post.njk
+eleventyComputed:
+  pageTitle: "{{ issue.title }}"
+  pageDescription: "{{ issue.bodyHtml | excerpt(180) }}"
+  ogType: article
+  ogImage: "{{ issue.image }}"
+---

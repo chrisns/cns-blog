@@ -1,6 +1,20 @@
 ---
 layout: base.njk
-title: Cloudy with a chance of freefall
+pageTitle: ""
 ---
-<h1>{{ title }}</h1>
-<p>Coming soon — a beautiful render of Chris's LinkedIn newsletter.</p>
+<section class="intro">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+</section>
+
+<ul class="issues">
+  {% for issue in issues %}
+    <li class="issue">
+      {% if issue.image %}<a class="issue-cover" href="/posts/{{ issue.slug }}/"><img src="{{ issue.image }}" alt="" loading="lazy"></a>{% endif %}
+      <div class="issue-meta">
+        <h2><a href="/posts/{{ issue.slug }}/">{{ issue.title }}</a></h2>
+        <time datetime="{{ issue.date | isoDate }}">{{ issue.date | humanDate }}</time>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

@@ -2,12 +2,14 @@
   "name": "cns-blog",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "description": "Static rendering of Chris Nesbitt-Smith's LinkedIn newsletter at blog.cns.me",
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.1.5",
+    "fast-xml-parser": "^5.7.2"
   }
 }
