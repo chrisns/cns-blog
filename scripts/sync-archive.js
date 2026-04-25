@@ -60,12 +60,20 @@ function entryFromArticleJson(slug, j) {
   };
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 async function fetchTopPages() {
   const items = [];
   for (let page = 1; page <= 100; page++) {
     const res = await fetch(`${FEED_BASE}/${NEWSLETTER_ID}?page=${page}`);
     if (!res.ok) {
-      throw new Error(`Worker page ${page} returned ${res.status}`);
+      // Don't abort the whole sync on a transient upstream failure — the
+      // archive is additive, so a missed live refresh is less bad than
+      // skipping the back-fill step entirely.
+      console.warn(
+        `Worker page ${page} returned ${res.status}; stopping live refresh early`
+      );
+      break;
     }
     const xml = await res.text();
     const parsed = parser.parse(xml);
@@ -73,6 +81,7 @@ async function fetchTopPages() {
     const pageItems = raw ? (Array.isArray(raw) ? raw : [raw]) : [];
     if (pageItems.length === 0) break;
     items.push(...pageItems);
+    await sleep(500);
   }
   return items.map(entryFromRssItem);
 }
@@ -130,6 +139,7 @@ async function main() {
       } catch (e) {
         console.error(`  ! ${stub.slug}: ${e.message}`);
       }
+      await sleep(750);
     }
   }
 
