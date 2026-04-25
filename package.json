@@ -1,0 +1,13 @@
+{
+  "name": "cns-blog",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Static rendering of Chris Nesbitt-Smith's LinkedIn newsletter at blog.cns.me",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
