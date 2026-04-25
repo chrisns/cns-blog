@@ -1,20 +1,106 @@
 ---
 layout: base.njk
 pageTitle: ""
+screenLabel: Index
 ---
-<section class="intro">
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
+{% set lead = issues[0] %}
+{% set rest = issues | slice(1) | first %}
+
+<section class="blog-intro">
+  <p>{{ site.description | safe }}</p>
 </section>
 
-<ul class="issues">
-  {% for issue in issues %}
-    <li class="issue">
-      {% if issue.image %}<a class="issue-cover" href="/posts/{{ issue.slug }}/"><img src="{{ issue.image }}" alt="" loading="lazy"></a>{% endif %}
-      <div class="issue-meta">
-        <h2><a href="/posts/{{ issue.slug }}/">{{ issue.title }}</a></h2>
-        <time datetime="{{ issue.date | isoDate }}">{{ issue.date | humanDate }}</time>
+<header class="section-header" id="index">
+  <div class="rule strong"></div>
+  <div class="sh-row">
+    <span class="eyebrow">Index</span>
+    <h2 class="sh-title">Cloudy with a chance of <em>freefall.</em></h2>
+    <span class="sh-count">
+      <span class="num">{{ issues.length }}</span>
+      <span class="cap">entries | reverse-chrono</span>
+    </span>
+  </div>
+</header>
+
+{% if lead %}
+<article class="post-lead">
+  <a href="/posts/{{ lead.slug }}/" class="post-lead-thumb-link">
+    {% if lead.image %}
+      <div class="post-lead-thumb thumb-img">
+        <img src="{{ lead.image }}" alt="" loading="lazy" class="thumb-photo">
       </div>
-    </li>
+    {% else %}
+      <div class="post-lead-thumb thumb-{{ lead.fallbackFill }}">
+        <span class="post-thumb-label">Latest</span>
+        <span class="post-thumb-glyph" aria-hidden="true">🦩</span>
+      </div>
+    {% endif %}
+  </a>
+  <div class="post-lead-body">
+    <div class="post-meta-top">
+      <span class="post-plate">Latest entry</span>
+      <span class="post-date">{{ lead.date | humanDate }}</span>
+    </div>
+    <h2 class="post-lead-title">
+      <a href="/posts/{{ lead.slug }}/">{{ lead.title }}</a>
+    </h2>
+    {% if lead.dek %}<p class="post-lead-dek">{{ lead.dek }}</p>{% endif %}
+    {% if lead.imgCaption %}
+      <blockquote class="post-lead-excerpt">
+        <p>{{ lead.imgCaption }}</p>
+      </blockquote>
+    {% endif %}
+    <div class="post-meta-bot">
+      <a href="/posts/{{ lead.slug }}/" class="post-lead-cta">Read in full →</a>
+      <span class="post-sep">|</span>
+      <span class="post-rt">{{ lead.readingTime }} min read</span>
+    </div>
+  </div>
+</article>
+{% endif %}
+
+<div class="post-grid">
+  {% for post in issues %}
+    {% if not loop.first %}
+      <article class="post-card">
+        <a href="/posts/{{ post.slug }}/" class="post-thumb-link">
+          {% if post.image %}
+            <div class="post-thumb thumb-img">
+              <img src="{{ post.image }}" alt="" loading="lazy" class="thumb-photo">
+            </div>
+          {% else %}
+            <div class="post-thumb thumb-{{ post.fallbackFill }}">
+              <span class="post-thumb-label">No cover</span>
+              <span class="post-thumb-glyph" aria-hidden="true">🦩</span>
+            </div>
+          {% endif %}
+        </a>
+        <div class="post-meta-top">
+          <span class="post-date">{{ post.date | humanDate }}</span>
+          <span class="post-rt">{{ post.readingTime }} min</span>
+        </div>
+        <h3 class="post-title">
+          <a href="/posts/{{ post.slug }}/">{{ post.title }}</a>
+        </h3>
+        {% if post.dek %}<p class="post-dek">{{ post.dek }}</p>{% endif %}
+        <div class="post-card-foot">
+          <a href="/posts/{{ post.slug }}/" class="post-card-cta">Read →</a>
+        </div>
+      </article>
+    {% endif %}
   {% endfor %}
-</ul>
+</div>
+
+<div class="ornament">🦩</div>
+
+<section class="subscribe-rail">
+  <div>
+    <span class="sr-eyebrow">Subscribe</span>
+    <h2 class="sr-title">Get the next one in your <em>inbox,</em> not your algorithm.</h2>
+  </div>
+  <div class="sr-actions">
+    <a class="sr-btn" href="{{ site.feedUrl }}">RSS</a>
+    <a class="sr-btn" href="https://github.com/chrisns">GitHub</a>
+    <a class="libutton" href="{{ site.followUrl }}" target="_blank" rel="noopener">Subscribe on LinkedIn</a>
+  </div>
+</section>

@@ -1,22 +1,50 @@
 ---
 layout: base.njk
+screenLabel: Post
 ---
-<article class="post">
+<article class="post measure-regular">
   <header class="post-header">
-    <h1>{{ issue.title }}</h1>
-    <time datetime="{{ issue.date | isoDate }}">{{ issue.date | humanDate }}</time>
+    <div class="post-header-meta">
+      <a href="/" class="post-back">← Index</a>
+      <span class="post-sep">|</span>
+      <span class="post-date">{{ issue.date | humanDate }}</span>
+      <span class="post-sep">|</span>
+      <span class="post-rt">{{ issue.readingTime }} min read</span>
+    </div>
+    <h1 class="post-h1">{{ issue.title }}</h1>
+    {% if issue.dek %}<p class="post-standfirst">{{ issue.dek }}</p>{% endif %}
   </header>
-  {% if issue.image %}
-  <figure class="post-cover">
+</article>
+
+{% if issue.image %}
+<figure class="post-hero-photo">
+  <div class="frame">
     <img src="{{ issue.image }}" alt="" loading="lazy">
-    {% if issue.imgCaption %}<figcaption>{{ issue.imgCaption }}</figcaption>{% endif %}
-  </figure>
+  </div>
+  {% if issue.imgCaption %}
+    <figcaption>
+      <span class="label">Cover</span>
+      <span class="text">{{ issue.imgCaption }}</span>
+    </figcaption>
   {% endif %}
+</figure>
+{% endif %}
+
+<article class="post measure-regular">
   <div class="post-body">
     {{ issue.bodyHtml | safe }}
   </div>
+
+  <div class="post-endmark">🦩</div>
+
   <footer class="post-footer">
-    <p>Originally published on <a href="{{ issue.sourceUrl }}" rel="canonical">LinkedIn</a>.</p>
-    <p><a href="/">← All issues</a></p>
+    <div class="post-footer-meta">
+      Originally published on <a href="{{ issue.sourceUrl }}" rel="canonical">LinkedIn</a>.
+    </div>
+    <div class="post-footer-share">
+      <span class="share-label">Share</span>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ (page.url | absoluteUrl(site.url)) | urlencode }}">LinkedIn</a>
+      <a href="{{ issue.sourceUrl }}">Original</a>
+    </div>
   </footer>
 </article>

@@ -7,6 +7,8 @@ export default {
   feedUrl: "https://blog.cns.me/feed.xml",
   newsletterUrl:
     "https://www.linkedin.com/newsletters/cloudy-with-chance-of-freefall-7439561267528458241/",
+  followUrl:
+    "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7439561267528458241",
   links: [
     { label: "Talks", href: "https://talks.cns.me" },
     { label: "GitHub", href: "https://github.com/chrisns" },

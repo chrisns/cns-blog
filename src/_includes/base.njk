@@ -17,23 +17,80 @@
     <meta name="twitter:creator" content="@chrisns">
   </head>
   <body>
-    <header class="site-header">
-      <a class="site-title" href="/">{{ site.title }}</a>
-      <nav class="site-nav">
-        {% for l in site.links %}
-          <a href="{{ l.href }}">{{ l.label }}</a>
-        {% endfor %}
-        <a href="{{ site.feedUrl }}" rel="alternate" type="application/rss+xml">RSS</a>
-      </nav>
-    </header>
-    <main>
+    <main class="page" data-screen-label="{{ screenLabel or 'Index' }}">
+      <header class="masthead">
+        <svg class="masthead-guilloche" aria-hidden="true" viewBox="0 0 1600 120" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="masthead-weave" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+              <path d="M 0 24 Q 12 0 24 24 T 48 24" fill="none" stroke="currentColor" stroke-width="0.5" />
+              <path d="M 0 24 Q 12 48 24 24 T 48 24" fill="none" stroke="currentColor" stroke-width="0.5" />
+            </pattern>
+          </defs>
+          <g class="guilloche-drift">
+            <rect x="-200" y="0" width="2000" height="120" fill="url(#masthead-weave)" />
+          </g>
+        </svg>
+
+        <div class="rule top draw-rule"></div>
+        <div class="masthead-row">
+          <a class="brand" href="/">
+            <span class="brand-cns">cns</span>
+            <span class="brand-dot"></span>
+            <span class="brand-me">me</span>
+            <span class="brand-blog">/ blog</span>
+            <svg class="brand-flourish" aria-hidden="true" viewBox="0 0 220 14" preserveAspectRatio="none">
+              <path d="M 2 8 C 30 2, 70 12, 110 6 S 190 4, 218 8" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+            </svg>
+          </a>
+          <span class="masthead-meta">
+            <em>Cloudy with a Chance of Freefall</em>
+          </span>
+          <span class="masthead-count">
+            <span class="num">{{ issues.length }}</span><span class="cap">filed</span>
+            <span class="masthead-pulse" aria-hidden="true">🦩</span>
+          </span>
+        </div>
+        <div class="rule draw-rule delay-1"></div>
+        <nav class="masthead-nav">
+          <div class="nav-left">
+            <a href="/">Index</a>
+            <a href="https://talks.cns.me">Talks</a>
+            <a href="https://github.com/chrisns">GitHub</a>
+            <a href="https://www.linkedin.com/in/chrisns/">LinkedIn</a>
+          </div>
+          <div class="nav-right">
+            <a href="{{ site.feedUrl }}">RSS</a>
+          </div>
+        </nav>
+        <div class="rule draw-rule delay-2"></div>
+      </header>
+
       {{ content | safe }}
+
+      <footer class="colophon">
+        <div class="orn">🦩</div>
+        <div class="colophon-grid">
+          <div>
+            <h4 class="cl-h">Colophon</h4>
+            <p class="cl-p meta">© <span class="numeral">{{ "now" | humanYear }}</span> {{ site.author }} — all words my own.</p>
+            <p class="cl-p">Originally published on <a href="{{ site.newsletterUrl }}"><em>LinkedIn</em></a>; rendered hourly from <a href="https://github.com/chrisns/cns-blog">github.com/chrisns/cns-blog</a>.</p>
+          </div>
+          <div>
+            <h4 class="cl-h">Elsewhere</h4>
+            <ul class="cl-list">
+              <li><a href="https://www.linkedin.com/in/chrisns/">LinkedIn</a></li>
+              <li><a href="https://talks.cns.me">talks.cns.me</a></li>
+              <li><a href="https://github.com/chrisns">GitHub</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="cl-h">Subscribe</h4>
+            <p class="cl-p">Get the next one in your <em>inbox,</em> not your algorithm.</p>
+            <a class="libutton" href="{{ site.followUrl }}" target="_blank" rel="noopener">Subscribe on LinkedIn</a>
+            <p class="cl-p meta"><a href="{{ site.feedUrl }}">RSS</a></p>
+          </div>
+        </div>
+      </footer>
     </main>
-    <footer class="site-footer">
-      <p>By <a href="https://www.linkedin.com/in/chrisns/">{{ site.author }}</a>. Originally published on
-        <a href="{{ site.newsletterUrl }}">LinkedIn</a>. Source on
-        <a href="https://github.com/chrisns/cns-blog">GitHub</a>, fed by
-        <a href="https://github.com/chrisns/linkedin-newsletter-rss">linkedin-newsletter-rss</a>.</p>
-    </footer>
   </body>
 </html>

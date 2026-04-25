@@ -11,6 +11,7 @@ export default function (eleventyConfig) {
     })
   );
   eleventyConfig.addFilter("rfc822", (d) => new Date(d).toUTCString());
+  eleventyConfig.addFilter("humanYear", () => new Date().getFullYear());
 
   eleventyConfig.addFilter("absoluteUrl", (path, base) => {
     try {
