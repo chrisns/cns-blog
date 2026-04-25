@@ -21,10 +21,7 @@ screenLabel: Post
     <img src="{{ issue.image }}" alt="" loading="lazy">
   </div>
   {% if issue.imgCaption %}
-    <figcaption>
-      <span class="label">Cover</span>
-      <span class="text">{{ issue.imgCaption }}</span>
-    </figcaption>
+    <figcaption>{{ issue.imgCaption }}</figcaption>
   {% endif %}
 </figure>
 {% endif %}

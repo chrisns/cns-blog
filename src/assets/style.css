@@ -1851,13 +1851,12 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   letter-spacing: 0.4em;
 }
 
-/* Single-post hero, photo variant */
+/* Single-post hero, photo variant — spans the full masthead width
+   (capped only by the page padding) and centres in flow. The
+   caption sits below at the same width as the image. */
 .post-hero-photo {
   margin: 32px auto 12px;
-  width: min(100%, 980px);
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
 }
 .post-hero-photo .frame {
   border: 1px solid var(--ink);
@@ -1881,23 +1880,15 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   pointer-events: none;
 }
 .post-hero-photo figcaption {
-  display: flex; gap: 16px; align-items: baseline;
   padding-top: 12px;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-  color: var(--ink-3);
-  max-width: 64ch; margin: 0 auto;
-}
-.post-hero-photo figcaption .label { color: var(--pink-deep); text-transform: uppercase; letter-spacing: 0.18em; font-weight: 600; }
-.post-hero-photo figcaption .text {
   font-family: var(--font-body);
   font-style: italic;
-  letter-spacing: 0;
-  font-size: 13.5px;
-  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  text-align: center;
   text-wrap: pretty;
-  flex: 1;
+  margin: 0;
 }
 
 /* Inline body figures from LinkedIn arrive as plain <figure><img>
@@ -2010,26 +2001,3 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   .subscribe-rail .sr-actions { justify-content: flex-start; }
 }
 
-/* LinkedIn-supplied newsletter follow button — kept in their official
-   blue/SF-Pro styling so the affordance reads as the platform widget.
-   Sits next to the editorial RSS/GitHub buttons in the subscribe rail. */
-.libutton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 7px;
-  text-align: center;
-  outline: none;
-  text-decoration: none !important;
-  color: #ffffff !important;
-  width: 200px;
-  height: 32px;
-  border-radius: 16px;
-  background-color: #0A66C2;
-  font-family: "SF Pro Text", Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  transition: background-color 200ms;
-}
-.libutton:hover { background-color: #004182; }

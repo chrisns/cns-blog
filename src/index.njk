@@ -5,18 +5,6 @@ screenLabel: Index
 ---
 {% set lead = issues[0] %}
 
-<header class="section-header" id="blog">
-  <div class="rule strong"></div>
-  <div class="sh-row">
-    <span class="eyebrow">Blog</span>
-    <h2 class="sh-title">Cloudy with a chance of <em>freefall.</em></h2>
-    <span class="sh-count">
-      <span class="num">{{ issues.length }}</span>
-      <span class="cap">entries | reverse-chrono</span>
-    </span>
-  </div>
-</header>
-
 {% if lead %}
 <article class="post-lead">
   <a href="/posts/{{ lead.slug }}/" class="post-lead-thumb-link">
@@ -96,6 +84,6 @@ screenLabel: Index
   <div class="sr-actions">
     <a class="sr-btn" href="{{ site.feedUrl }}">RSS</a>
     <a class="sr-btn" href="https://github.com/chrisns">GitHub</a>
-    <a class="libutton" href="{{ site.followUrl }}" target="_blank" rel="noopener">Subscribe on LinkedIn</a>
+    <a class="sr-btn primary" href="{{ site.followUrl }}" target="_blank" rel="noopener">Subscribe on LinkedIn →</a>
   </div>
 </section>
