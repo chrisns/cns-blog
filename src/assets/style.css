@@ -666,8 +666,40 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
     0 1px 0 rgba(20, 17, 15, 0.45),
     0 6px 18px rgba(20, 17, 15, 0.55),
     0 0 28px rgba(229, 25, 127, 0.35);
+  animation: masthead-title-drift 8s ease-in-out infinite;
+  transform-origin: bottom right;
+  will-change: transform, text-shadow;
 }
-.masthead-banner-title em { color: var(--pink-hot); font-style: italic; }
+.masthead-banner-title em {
+  color: var(--pink-hot);
+  font-style: italic;
+  display: inline-block;
+  animation: masthead-title-shimmer 6s ease-in-out infinite;
+}
+@keyframes masthead-title-drift {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    text-shadow:
+      0 1px 0 rgba(20, 17, 15, 0.45),
+      0 6px 18px rgba(20, 17, 15, 0.55),
+      0 0 28px rgba(229, 25, 127, 0.35);
+  }
+  50% {
+    transform: translateY(-1px) rotate(-0.3deg);
+    text-shadow:
+      0 1px 0 rgba(20, 17, 15, 0.45),
+      0 8px 22px rgba(20, 17, 15, 0.55),
+      0 0 38px rgba(229, 25, 127, 0.55);
+  }
+}
+@keyframes masthead-title-shimmer {
+  0%, 100% { color: var(--pink-hot); }
+  50%      { color: var(--pink); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .masthead-banner-title,
+  .masthead-banner-title em { animation: none; }
+}
 
 /* Hand-drawn flourish under the wordmark — strokes on once, replays on hover */
 .brand { position: relative; }
