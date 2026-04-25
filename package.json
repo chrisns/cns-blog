@@ -6,7 +6,8 @@
   "description": "Static rendering of Chris Nesbitt-Smith's LinkedIn newsletter at blog.cns.me",
   "scripts": {
     "build": "eleventy",
-    "dev": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "sync": "node scripts/sync-archive.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
