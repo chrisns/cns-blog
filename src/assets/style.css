@@ -1462,12 +1462,15 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   letter-spacing: 0.04em;
 }
 
-/* Pull-quote — re-using the design language from preview/pull-quote.html */
+/* Pull-quote — applies to any blockquote in the post body, since LinkedIn
+   ships plain <blockquote> elements without our class names. */
+.post-body blockquote,
 .post-body blockquote.pull-quote {
   margin: 2em 0;
   padding: 0 0 0 24px;
   border-left: 3px solid var(--pink);
 }
+.post-body blockquote p,
 .post-body blockquote.pull-quote p {
   font-family: var(--font-display);
   font-style: italic;
@@ -1475,10 +1478,12 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   font-size: 26px;
   line-height: 1.3;
   color: var(--ink);
-  margin: 0;
+  margin: 0 0 0.6em;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
+.post-body blockquote p:last-child,
+.post-body blockquote.pull-quote p:last-child { margin-bottom: 0; }
 
 /* Code block */
 .post-body pre.code {
@@ -1893,6 +1898,36 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   color: var(--ink-2);
   text-wrap: pretty;
   flex: 1;
+}
+
+/* Inline body figures from LinkedIn arrive as plain <figure><img>
+   <figcaption>. Break them out of the 68ch text measure and centre on
+   the page, capped at the same 980px as the hero photo. The caption
+   below spans the full image width. */
+.post .post-body figure {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw - 32px, 980px);
+  margin: 2.4em 0;
+}
+.post .post-body figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ink);
+  background: var(--paper-2);
+}
+.post .post-body figcaption {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  text-align: center;
+  padding-top: 12px;
+  margin: 0 auto;
+  text-wrap: pretty;
 }
 
 /* Aside paragraph (e.g. 'Views in this article are my own') */
