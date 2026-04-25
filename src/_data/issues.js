@@ -46,11 +46,20 @@ function readingTime(html) {
   return Math.max(1, Math.round(words / 220));
 }
 
+const PLAY_OVERLAY = `<button type="button" class="post-video-play" aria-label="Play video" onclick="this.previousElementSibling.play();this.style.display='none';"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#E5197F"/><polygon points="40,28 40,72 76,50" fill="#FBF8F2"/></svg></button>`;
+
+function wrapVideos(html) {
+  if (!html || !html.includes("<video")) return html;
+  return html.replace(/<video\b[\s\S]*?<\/video>/g, (vid) => {
+    return `<div class="post-video">${vid}${PLAY_OVERLAY}</div>`;
+  });
+}
+
 export default function () {
   return Object.values(archive)
     .filter((e) => e.title && e.bodyHtml)
     .map((e) => {
-      const bodyHtml = stripLeadingTitleHeading(e.bodyHtml, e.title);
+      const bodyHtml = wrapVideos(stripLeadingTitleHeading(e.bodyHtml, e.title));
       return {
         title: e.title,
         slug: e.slug,
