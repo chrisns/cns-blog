@@ -633,6 +633,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
    source is a 1400×350 LinkedIn profile background, so we keep the
    aspect ratio wide and let the image fill the full page width. */
 .masthead-banner {
+  position: relative;
   margin: 16px 0 8px;
   width: 100%;
   aspect-ratio: 1400 / 350;
@@ -646,6 +647,27 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   object-fit: cover;
   display: block;
 }
+.masthead-banner-title {
+  position: absolute;
+  right: clamp(16px, 3vw, 36px);
+  bottom: clamp(10px, 2.4vw, 28px);
+  margin: 0;
+  max-width: 70%;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-style: italic;
+  font-size: clamp(24px, 4.8vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--pink);
+  text-align: right;
+  text-wrap: balance;
+  text-shadow:
+    0 1px 0 rgba(20, 17, 15, 0.45),
+    0 6px 18px rgba(20, 17, 15, 0.55),
+    0 0 28px rgba(229, 25, 127, 0.35);
+}
+.masthead-banner-title em { color: var(--pink-hot); font-style: italic; }
 
 /* Hand-drawn flourish under the wordmark — strokes on once, replays on hover */
 .brand { position: relative; }

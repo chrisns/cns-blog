@@ -69,9 +69,12 @@
           </div>
         </nav>
         <div class="rule draw-rule delay-2"></div>
+        {% if screenLabel == "Index" %}
         <div class="masthead-banner">
           <img src="https://linkedinrss.cns.me/img/aHR0cHM6Ly9tZWRpYS5saWNkbi5jb20vZG1zL2ltYWdlL3YyL0M1NjE2QVFHVVdiRV9NSXo1S1EvcHJvZmlsZS1kaXNwbGF5YmFja2dyb3VuZGltYWdlLXNocmlua18zNTBfMTQwMC9wcm9maWxlLWRpc3BsYXliYWNrZ3JvdW5kaW1hZ2Utc2hyaW5rXzM1MF8xNDAwLzAvMTUxNjM0OTU2NjMxMT9lPTE3Nzg3MTY4MDAmdj1iZXRhJnQ9QklveVNQU0FUZEMzaWFSa2RjbEkyUVNCUERoUWljTzFDcVg2aDNMa1dkcw" alt="" loading="lazy">
+          <h1 class="masthead-banner-title">Cloudy with a chance of <em>freefall.</em></h1>
         </div>
+        {% endif %}
       </header>
 
       {{ content | safe }}
