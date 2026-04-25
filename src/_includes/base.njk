@@ -15,6 +15,13 @@
     {% if ogImage %}<meta property="og:image" content="{{ ogImage }}">{% endif %}
     <meta name="twitter:card" content="{% if ogImage %}summary_large_image{% else %}summary{% endif %}">
     <meta name="twitter:creator" content="@chrisns">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5CELB7DHP9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5CELB7DHP9');
+    </script>
   </head>
   <body>
     <main class="page" data-screen-label="{{ screenLabel or 'Index' }}">
