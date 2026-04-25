@@ -2,7 +2,7 @@
 layout: base.njk
 screenLabel: Post
 ---
-<article class="post measure-regular">
+<article class="post measure-regular post--head">
   <header class="post-header">
     <div class="post-header-meta">
       <a href="/" class="post-back">← Index</a>
@@ -26,7 +26,7 @@ screenLabel: Post
 </figure>
 {% endif %}
 
-<article class="post measure-regular">
+<article class="post measure-regular post--body">
   <div class="post-body">
     {{ issue.bodyHtml | safe }}
   </div>

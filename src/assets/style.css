@@ -1295,9 +1295,11 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 
 .post-header {
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 28px;
-  margin-bottom: 40px;
+  padding-bottom: 18px;
+  margin-bottom: 12px;
 }
+.post.post--head { padding: 48px 0 0; }
+.post.post--body { padding: 16px 0 64px; }
 
 .post-header-meta {
   display: flex;
@@ -1855,7 +1857,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
    (capped only by the page padding) and centres in flow. The
    caption sits below at the same width as the image. */
 .post-hero-photo {
-  margin: 32px auto 12px;
+  margin: 8px auto 12px;
   width: 100%;
 }
 .post-hero-photo .frame {
