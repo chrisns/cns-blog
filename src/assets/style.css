@@ -655,10 +655,10 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
   max-width: 70%;
   font-family: var(--font-display);
   font-weight: 800;
-  font-style: italic;
-  font-size: clamp(24px, 4.8vw, 72px);
+  font-style: normal;
+  font-size: clamp(28px, 5.4vw, 80px);
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   color: var(--pink);
   text-align: right;
   text-wrap: balance;
@@ -673,6 +673,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 .masthead-banner-title em {
   color: var(--pink-hot);
   font-style: italic;
+  font-weight: 800;
   display: inline-block;
   animation: masthead-title-shimmer 6s ease-in-out infinite;
 }
