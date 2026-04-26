@@ -1,0 +1,4 @@
+# Override the chrisns/.github base — no branch protection or ruleset on this repo.
+# Arrays in repo-config replace owner-level entries (deep merge with array-source).
+branchProtection: []
+rulesets: []
