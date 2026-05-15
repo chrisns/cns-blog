@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% if pageTitle %}{{ pageTitle }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{{ pageDescription or site.description }}">
-    <link rel="canonical" href="{{ (page.url | absoluteUrl(site.url)) }}">
+    <link rel="canonical" href="{{ canonicalUrl or (page.url | absoluteUrl(site.url)) }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.feedUrl }}">
     <link rel="stylesheet" href="/assets/style.css">
     <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}">
