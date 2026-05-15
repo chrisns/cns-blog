@@ -6,8 +6,9 @@ pagination:
 permalink: "/posts/{{ issue.slug }}/"
 layout: post.njk
 eleventyComputed:
-  pageTitle: "{{ issue.title }}"
-  pageDescription: "{{ issue.bodyHtml | excerpt(180) }}"
+  pageTitle: "{{ issue.title | safe }}"
+  pageDescription: "{{ issue.bodyHtml | excerpt(180) | safe }}"
   ogType: article
   ogImage: "{{ issue.image }}"
+  canonicalUrl: "{{ issue.sourceUrl }}"
 ---
