@@ -70,6 +70,7 @@ export default function () {
         imgCaption: e.imgCaption || null,
         bodyHtml,
         dek: dekFrom(bodyHtml),
+        leadDek: dekFrom(bodyHtml, 420),
         readingTime: readingTime(bodyHtml),
         fallbackFill: fallbackFill(e.slug),
       };

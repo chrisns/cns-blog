@@ -27,12 +27,7 @@ screenLabel: Index
     <h2 class="post-lead-title">
       <a href="/posts/{{ lead.slug }}/">{{ lead.title }}</a>
     </h2>
-    {% if lead.dek %}<p class="post-lead-dek">{{ lead.dek }}</p>{% endif %}
-    {% if lead.imgCaption %}
-      <blockquote class="post-lead-excerpt">
-        <p>{{ lead.imgCaption }}</p>
-      </blockquote>
-    {% endif %}
+    {% if lead.leadDek %}<p class="post-lead-dek">{{ lead.leadDek }}</p>{% endif %}
     <div class="post-meta-bot">
       <a href="/posts/{{ lead.slug }}/" class="post-lead-cta">Read in full →</a>
       <span class="post-sep">|</span>
