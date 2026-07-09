@@ -8,9 +8,36 @@ function fallbackFill(slug = "") {
   return FILLS[h % FILLS.length];
 }
 
+const NAMED_ENTITIES = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  nbsp: " ",
+};
+
+function decodeEntities(text) {
+  return text.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (match, body) => {
+    if (body[0] === "#") {
+      const code =
+        body[1] === "x" || body[1] === "X"
+          ? parseInt(body.slice(2), 16)
+          : parseInt(body.slice(1), 10);
+      return Number.isFinite(code) ? String.fromCodePoint(code) : match;
+    }
+    const named = NAMED_ENTITIES[body.toLowerCase()];
+    return named !== undefined ? named : match;
+  });
+}
+
 function plainText(html) {
-  return String(html || "")
-    .replace(/<[^>]+>/g, " ")
+  return decodeEntities(
+    String(html || "")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+  )
     .replace(/\s+/g, " ")
     .trim();
 }
