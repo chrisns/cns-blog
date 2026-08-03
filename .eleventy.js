@@ -2,6 +2,15 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
+  // The design system is the dependency @chrisns/design, not a copy in this repo.
+  // colors_and_type.css @imports tokens.css relatively, so they must stay siblings.
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@chrisns/design/tokens.css": "assets/design/tokens.css",
+    "node_modules/@chrisns/design/colors_and_type.css": "assets/design/colors_and_type.css",
+    "node_modules/@chrisns/design/ui_kits/blog/blog.css": "assets/design/blog.css",
+  });
+  eleventyConfig.addWatchTarget("node_modules/@chrisns/design");
+
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString());
   eleventyConfig.addFilter("humanDate", (d) =>
     new Date(d).toLocaleDateString("en-GB", {
