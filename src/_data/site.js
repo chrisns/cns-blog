@@ -12,7 +12,7 @@ export default {
   links: [
     { label: "Talks", href: "https://talks.cns.me" },
     { label: "GitHub", href: "https://github.com/chrisns" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/chrisns/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/cnesbittsmith/" },
     {
       label: "Subscribe on LinkedIn",
       href: "https://www.linkedin.com/newsletters/cloudy-with-chance-of-freefall-7439561267528458241/",
