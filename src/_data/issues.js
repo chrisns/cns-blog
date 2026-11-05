@@ -64,8 +64,14 @@ function dekFrom(html, max = 220) {
   const text = plainText(html);
   if (text.length <= max) return text;
   const slice = text.slice(0, max);
-  const lastDot = slice.lastIndexOf(". ");
-  return (lastDot > 80 ? slice.slice(0, lastDot + 1) : slice.replace(/\s+\S*$/, "")) + "…";
+  // Cut on a sentence boundary when there is one (no ellipsis needed),
+  // otherwise on a word boundary with an ellipsis. Ignore full stops after a
+  // lone initial ("William B. Mayo") so we don't stop mid-name.
+  let lastDot = -1;
+  for (const m of slice.matchAll(/[.!?](?=\s)/g)) {
+    if (!/(^|\s)[A-Z]$/.test(slice.slice(0, m.index))) lastDot = m.index;
+  }
+  return lastDot > 80 ? slice.slice(0, lastDot + 1) : slice.replace(/\s+\S*$/, "") + "…";
 }
 
 function readingTime(html) {
@@ -98,6 +104,9 @@ export default function () {
         bodyHtml,
         dek: dekFrom(bodyHtml),
         leadDek: dekFrom(bodyHtml, 420),
+        // Social card / meta description: opening sentences, cut on a sentence
+        // boundary where possible so Slack, LinkedIn etc. show a clean excerpt.
+        description: dekFrom(bodyHtml, 200),
         readingTime: readingTime(bodyHtml),
         fallbackFill: fallbackFill(e.slug),
       };

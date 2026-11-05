@@ -7,7 +7,8 @@ permalink: "/posts/{{ issue.slug }}/"
 layout: post.njk
 eleventyComputed:
   pageTitle: "{{ issue.title | safe }}"
-  pageDescription: "{{ issue.bodyHtml | excerpt(180) | safe }}"
+  pageDescription: "{{ issue.description | safe }}"
+  publishedTime: "{{ issue.date | isoDate }}"
   ogType: article
   ogImage: "{{ issue.image }}"
   canonicalUrl: "{{ issue.sourceUrl }}"

@@ -3,6 +3,10 @@ export default {
   description:
     "Semi-coherent thoughts from a technologist finding himself cosplaying other roles in an organisation to achieve outcomes.",
   author: "Chris Nesbitt-Smith",
+  // Card image used when a page has no cover of its own (e.g. the index).
+  image: "https://blog.cns.me/assets/masthead-banner.jpg",
+  imageAlt: "Cloudy with a chance of freefall: masthead banner",
+  twitter: "@chrisns",
   url: "https://blog.cns.me",
   feedUrl: "https://blog.cns.me/feed.xml",
   newsletterUrl:
